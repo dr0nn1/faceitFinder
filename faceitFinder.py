@@ -41,7 +41,7 @@ def app():
 
     print(f'You have met in {len(matches)} matches. Here are the links:')
     for match in matches:
-        print(f'https://www.faceit.com/en/csgo/room/{match}/scoreboard' + "\n")
+        print(f'https://www.faceit.com/en/cs2/room/{match}/scoreboard' + "\n")
 
 
 def findUserId(name):
@@ -52,7 +52,7 @@ def findUserId(name):
 
 
 def findTotalGames(id):
-    url = f'{baseURL}players/{id}/stats/csgo'
+    url = f'{baseURL}players/{id}/stats/cs2'
     response = requests.get(url=url, headers=headers)
     response_dict = json.loads(response.text)
     return (response_dict['lifetime']['Matches'])
@@ -60,7 +60,7 @@ def findTotalGames(id):
 
 def findUserGames(id, offset):
     print(f'Leter fra match {offset} - {offset+100} ')
-    url = f'{baseURL}players/{id}/history?game=csgo&from=0&to={int(datetime.now().timestamp())}]&offset={offset}&limit=100'
+    url = f'{baseURL}players/{id}/history?game=cs2&from=0&to={int(datetime.now().timestamp())}]&offset={offset}&limit=100'
     response = requests.get(url=url, headers=headers)
     return json.loads(response.text)
 
